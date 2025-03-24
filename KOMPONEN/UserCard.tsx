@@ -2,7 +2,6 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 
-// Tipe data untuk User
 interface UserProps {
   id: number;
   email: string;
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     padding: 10,
     marginVertical: 5,
-    borderRadius: 10,
+    borderRadius: 5,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 50,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 10,
     marginRight: 10,
   },
   name: {

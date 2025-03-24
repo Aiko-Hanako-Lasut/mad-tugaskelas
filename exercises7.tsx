@@ -1,10 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import axios from 'axios';
-import UserCard from './KOMPONEN/UserCard'; // Impor komponen UserCard
+import UserCard from './KOMPONEN/UserCard';
 
-// Tipe data untuk User
 interface User {
   id: number;
   email: string;
@@ -39,15 +44,15 @@ const Exercises7: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>User List</Text>
-      {/* Menggunakan map() untuk menampilkan daftar pengguna */}
-      {users.map(user => (
-        <UserCard key={user.id} {...user} />
-      ))}
+      <ScrollView style={styles.scrollView}>
+        {users.map(user => (
+          <UserCard key={user.id} {...user} />
+        ))}
+      </ScrollView>
     </View>
   );
 };
 
-// Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -58,6 +63,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  scrollView: {
+    flexGrow: 1,
   },
   loader: {
     flex: 1,
