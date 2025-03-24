@@ -1,15 +1,8 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
 import axios from 'axios';
+import UserCard from './KOMPONEN/UserCard'; // Impor komponen UserCard
 
 // Tipe data untuk User
 interface User {
@@ -46,21 +39,10 @@ const Exercises7: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>User List</Text>
-      <FlatList
-        data={users}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => (
-          <View style={styles.card}>
-            <Image source={{uri: item.avatar}} style={styles.avatar} />
-            <View>
-              <Text style={styles.name}>
-                {item.first_name} {item.last_name}
-              </Text>
-              <Text style={styles.email}>{item.email}</Text>
-            </View>
-          </View>
-        )}
-      />
+      {/* Menggunakan map() untuk menampilkan daftar pengguna */}
+      {users.map(user => (
+        <UserCard key={user.id} {...user} />
+      ))}
     </View>
   );
 };
@@ -80,32 +62,6 @@ const styles = StyleSheet.create({
   loader: {
     flex: 1,
     justifyContent: 'center',
-  },
-  card: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#f9f9f9',
-    padding: 10,
-    marginVertical: 5,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 10,
-    marginRight: 10,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  email: {
-    fontSize: 14,
-    color: 'gray',
   },
 });
 
